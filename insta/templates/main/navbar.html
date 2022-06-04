@@ -1,0 +1,62 @@
+{% load static %}
+<nav class="navbar m-0 bg-white">
+    <div class="container">
+    <div class="logo">
+        <a class="no-underline" href="#">
+            Instagram
+        </a>
+    </div>
+    <form class="form-inline" id="searchform" action="" role="search">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="searching"
+            name="search_profile" />
+    </form>
+    {% if user.is_authenticated %}
+    <ul class="icons m-0">
+        <li class="nav-item">
+            <a class="nav-link mr-0" href="/home">
+                home
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link mr-0" href="#">
+                dm
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link mr-0" href="">
+                post
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link mr-0" href="#">
+                feed
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link mr-0" href="">
+                likes
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Profile
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Saved</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            </ul>
+        </li>
+    </ul>
+    {% else %}
+    <li>
+        <a class="btn btn-default" href="accounts/login">Sign in</a>
+    </li>
+    {%endif%}
+    </div>
+</nav>
+<hr class="m-0" />
