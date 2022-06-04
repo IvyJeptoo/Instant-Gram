@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # user, profile, post, comments
 
 
@@ -17,8 +18,8 @@ class Post(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     image=models.ImageField()
     caption=models.TextField(max_length=100)
-    likes=models.ForeignKey('Likes',on_delete=models.SET_NULL)
-    date=models.Date.TimeField(auto_now_add=True)
+    # likes=models.ForeignKey('Likes',on_delete=models.SET_NULL)
+    date=models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.caption
