@@ -49,7 +49,7 @@ class Profile(models.Model):
     
     bio = models.CharField(max_length=300)
     name = models.CharField(blank=True, max_length=120)
-    photo = CloudinaryField('image')
+    photo = CloudinaryField('image',default='http://res.cloudinary.com/dim8pysls/image/upload/v1639001486/x3mgnqmbi73lten4ewzv.png')
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         try:
