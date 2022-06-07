@@ -36,7 +36,7 @@ def post(request):
             post = form.save(commit=False)
             post.user = request.user.profile
             post.save()
-            return redirect('index')
+            return redirect('landing')
     else:
         form = UploadForm()
     return render(request,'post_image.html', {"form":form})
@@ -166,5 +166,5 @@ def like_post(request,id):
     else:
         post.likes.add(user.user)
         is_liked=True
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse('landing'))
     
