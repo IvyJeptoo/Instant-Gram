@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config,Csv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,17 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'insta',
+    'insta', 
     
-   
-    
-    'crispy_forms',
-    'crispy_bootstrap5',
+   'bootstrap4',
+    'cloudinary',
+    'tinymce'
 ]
 
-CRISPY_ALLOWED_TEMPLATES_PACKS = 'bootstrap5'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 SITE_ID = 1
 
@@ -90,7 +91,7 @@ WSGI_APPLICATION = 'instagram.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gram',
+        'NAME': 'binsta',
         'USER': 'moringa',
         'PASSWORD': '1234',
     }
@@ -138,26 +139,42 @@ USE_I18N = True
 USE_TZ = True
 
 
+CLOUDINARY_STORAGE={
+  'cloud_name' : "jeptoo", 
+  'api_key' : "471277654964262", 
+  'api_secret': "2itqwi8ObBsdTvhwF6q2pBI0gRQ"
+  
+  
+}
+cloudinary.config( 
+  cloud_name = "jeptoo", 
+  api_key = "471277654964262", 
+  api_secret = "2itqwi8ObBsdTvhwF6q2pBI0gRQ" 
+)
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = '/images/'
+
+STATICFILES_DIRS = [  
+    BASE_DIR / 'static'
+]
+
+MEDIA_ROOT = BASE_DIR / 'static/images'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/login'
 
-# SMTP CONFIGURATIONS
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST ='smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS= True
-EMAIL_HOST_USER= 'chitooivy@gmail.com'
-EMAIL_HOST_PASSWORD= '@Password2340'
+
