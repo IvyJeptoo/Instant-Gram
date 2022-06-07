@@ -20,7 +20,7 @@
     <nav class="container-fluid"
         style="border-bottom: solid rgba(182, 176, 176, 0.74) 1px; padding-bottom: 5px; padding-left: 150px;">
         <div class="logo">
-            <a class="no-underline" href="{%url 'index'%}">
+            <a class="no-underline" href="{%url 'landing' %}">
                 Instant-Gram
             </a>
         </div>
@@ -31,7 +31,7 @@
         </form>
         <span class="pull-right">
             <div class="col-sm-6 col-md-6" style="display: inline-flex; margin-right: 50px;">
-                <a class="mr-3 mt-2 text-dark" href="{%url 'index'%}">
+                <a class="mr-3 mt-2 text-dark" href="{%url 'landing'%}">
                     <span class="iconify" data-icon="ant-design:home-filled" data-width="25" data-height="25"></span>
 
 
@@ -49,7 +49,7 @@
                         </svg></a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="" style="color: inherit;">
+                            <a href="{%url 'profile' user.username%}" style="color: inherit;">
         </span>View Profile</a>
         </li>
         <li>
